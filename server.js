@@ -4,15 +4,16 @@ const express = require('express');
 const app = express();
 require('ejs');
 const superagent = require('superagent');
-app.use('superagant');
+// app.use('superagant');
 require('dotenv').config();
+const cors = require('cors');
 app.use(cors());
+const pg = require('pg');
+const client = new pg.Client(process.env.DATABASE_URL);
+client.on('error', (err) => console.log(err));
 const { response } = require('express');
-const dataBaseUrl = process.env.DATABASE_URL;
 
-clientInformation.onLine('error', (err) =>{
-    console.error(err); 
-})
+
 
 
 // BRING IN MY MIDDLEWARE
@@ -25,8 +26,8 @@ const PORT = 3000;
 
 // ROUTES
 app.get('/', renderHomePage);
-app.get('/searchform', renderSearchForm);
-app.get('searches', collectFormInformation);
+// app.get('/views', renderSearchForm);
+// app.get('searches', collectFormInformation);
 
 // CONSTRUCTOR FUNCTION 
 
@@ -34,9 +35,16 @@ app.get('searches', collectFormInformation);
 
 // FUNCTIONS
 
-function renderHomePage() {
-    console.log('Welcome to homepage');
+function renderHomePage(req, res) {
+    // res.sendfile('/views/pages');
+    console.log('inside home function');
+    res.status(200).render('pages/index.ejs');
 }
+
+
+
+// SERVER IS LISTENING
+
 
 
 app.listen(PORT, (req, res) =>{
