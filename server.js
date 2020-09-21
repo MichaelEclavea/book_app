@@ -26,6 +26,7 @@ const PORT = process.env.PORT || 5050;
 
 // ROUTES
 app.get('/', renderHomePage);
+app.get('/searches/new', renderPages);
 // app.get('/views', renderSearchForm);
 // app.get('searches', collectFormInformation);
 
@@ -39,6 +40,10 @@ function renderHomePage(req, res) {
     // res.sendfile('/views/pages');
     console.log('inside home function');
     res.status(200).render('pages/index.ejs');
+}
+
+function renderPages(req, res) {
+    res.status(200).render('pages/searches/new.ejs')
 }
 
 

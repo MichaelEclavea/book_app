@@ -12,15 +12,15 @@ Finish time: 1:40pm
 Actual time needed to complete: 1hr
 
 
-Number and name of feature: ________________________________
+Number and name of feature: 2. Search pat
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 30min
 
-Start time: _____
+Start time: 2:10pm
 
-Finish time: _____
+Finish time: 2:21pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 11min
 
 
 Number and name of feature: ________________________________
