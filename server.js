@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 require('ejs');
 const superagent = require('superagent');
-// app.use('superagant');
+app.use('superagent');
 require('dotenv').config();
 const cors = require('cors');
 app.use(cors());
