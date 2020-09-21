@@ -26,6 +26,7 @@ const PORT = process.env.PORT || 5050;
 app.get('/', renderHomePage);
 app.post('/searches', collectFormInformation);
 app.get('/searches/new', renderSearchForm);
+app.get('/error');
 
 // app.get('/views', renderSearchForm);
 // app.get('searches', collectFormInformation);
@@ -66,9 +67,11 @@ function collectFormInformation(req, res) {
            console.log(data.body);
            const bookArray = data.body.items;
            const finalBookArray = bookArray.map(book => new Book(book.volumeInfo));
-           res.status(200).render('pages/searches/show', {library: finalBookArray});
-           
-       }) 
+           res.status(200).render('pages/searches/show', {library: finalBookArray});  
+       }) .catch (error =>{
+           console.error('This is our error', error);
+           res.status(500).render('pages/error');
+       });
 }
 
 

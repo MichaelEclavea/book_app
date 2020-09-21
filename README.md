@@ -36,10 +36,9 @@ Actual time needed to complete: 2hrs
 
 Number and name of feature: 
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 4. error views
+Start time: 4:30
 
-Start time: _____
-
-Finish time: _____
+Finish time: 
 
 Actual time needed to complete: _____
