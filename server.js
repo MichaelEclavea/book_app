@@ -22,7 +22,7 @@ app.use(express.static('./public'));
 app.use(express.urlencoded({extended:true}));
 
 // GLOBAL VARIABLES
-const PORT = 3000;
+const PORT = process.env.PORT || 5050;
 
 // ROUTES
 app.get('/', renderHomePage);
