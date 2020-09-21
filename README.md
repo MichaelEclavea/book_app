@@ -43,3 +43,14 @@ Start time: 4:30
 Finish time: 4:55pm
 
 Actual time needed to complete:25min
+
+
+Number and name of feature: 6. home page
+
+Estimate of time needed to complete: 1hr
+
+Start time: 4:57
+
+Finish time: 4:57pm
+
+Actual time needed to complete: 30seconds!!
