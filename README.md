@@ -23,18 +23,18 @@ Finish time: 2:21pm
 Actual time needed to complete: 11min
 
 
-Number and name of feature: ________________________________
+Number and name of feature: 3. render in show
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1.5hrs
 
-Start time: _____
+Start time: 2:25pm
 
-Finish time: _____
+Finish time: 4:25pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 2hrs
 
 
-Number and name of feature: ________________________________
+Number and name of feature: 
 
 Estimate of time needed to complete: _____
 

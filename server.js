@@ -14,8 +14,6 @@ client.on('error', (err) => console.log(err));
 
 
 
-
-
 // BRING IN MY MIDDLEWARE
 app.set('view engine', 'ejs');
 app.use(express.static('./public'));
@@ -63,8 +61,6 @@ function collectFormInformation(req, res) {
        if(searchType === 'title') {url += `+intitle:${searchQuery}`}
        if(searchType === 'author') {url += `+inauthor:${searchQuery}`}
     
-       
-
        superagent.get(url)
        .then (data =>{
            console.log(data.body);
