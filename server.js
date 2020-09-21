@@ -4,14 +4,14 @@ const express = require('express');
 const app = express();
 require('ejs');
 const superagent = require('superagent');
-app.use('superagent');
+
 require('dotenv').config();
 const cors = require('cors');
 app.use(cors());
 const pg = require('pg');
 const client = new pg.Client(process.env.DATABASE_URL);
 client.on('error', (err) => console.log(err));
-const { response } = require('express');
+
 
 
 
