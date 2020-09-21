@@ -34,11 +34,12 @@ Finish time: 4:25pm
 Actual time needed to complete: 2hrs
 
 
-Number and name of feature: 
+Number and name of feature: 4. error views
 
-Estimate of time needed to complete: 4. error views
+Estimate of time needed to complete: 1hr
+
 Start time: 4:30
 
-Finish time: 
+Finish time: 4:55pm
 
-Actual time needed to complete: _____
+Actual time needed to complete:25min
