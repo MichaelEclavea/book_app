@@ -6,8 +6,8 @@ require('ejs');
 const superagent = require('superagent');
 
 require('dotenv').config();
-const cors = require('cors');
-app.use(cors());
+// const cors = require('cors');
+// app.use(cors());
 const pg = require('pg');
 const client = new pg.Client(process.env.DATABASE_URL);
 client.on('error', (err) => console.log(err));
@@ -26,7 +26,7 @@ const PORT = process.env.PORT || 5050;
 
 // ROUTES
 app.get('/', renderHomePage);
-app.get('/searches', collectFormInformation);
+app.post('/searches', collectFormInformation);
 app.get('/searches/new', renderSearchForm);
 
 // app.get('/views', renderSearchForm);
@@ -35,9 +35,11 @@ app.get('/searches/new', renderSearchForm);
 // CONSTRUCTOR FUNCTION 
 
 function Book(object) {
-    this.title = object.title;
-    this.author = object.author;
-    this.undefined = 
+    this.title = object.title ? object.title : 'No title found.';
+    this.author = object.authors ? object.authors[0] : 'No author found';
+    this.description = object.description ? object.description : 'No description found.';
+    this.image = object.imageLinks.thumbnail ? object.imageLinks.thumbnail : 'https://i.imgur.com/J5LVHEL.jpg';
+    
 }
 
 // FUNCTIONS
@@ -60,6 +62,7 @@ function collectFormInformation(req, res) {
        let url = 'https://www.googleapis.com/books/v1/volumes?q=';
        if(searchType === 'title') {url += `+intitle:${searchQuery}`}
        if(searchType === 'author') {url += `+inauthor:${searchQuery}`}
+    
        
 
        superagent.get(url)
@@ -67,7 +70,7 @@ function collectFormInformation(req, res) {
            console.log(data.body);
            const bookArray = data.body.items;
            const finalBookArray = bookArray.map(book => new Book(book.volumeInfo));
-           res.render('/pages/show', {library: finalBookArray});
+           res.status(200).render('pages/searches/show', {library: finalBookArray});
            
        }) 
 }

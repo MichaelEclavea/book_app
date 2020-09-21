@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Book Collection</title>
+    <link rel="stylesheet" href="/styles/base.css">
+  </head>
+  <body>
+    <main>
+        <div></div>
+      <ul>
+        <% library.forEach(book => { %>
+            <img src="<%= book.image %>" alt="book-image">
+          <li><%= book.title %></li>
+          <li><%= book.author %></li>
+          <li><%= book.description %> </li>
+        <% }) %>
+      </ul>
+    </main>
+  </body>
+</html>
