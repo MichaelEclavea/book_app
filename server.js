@@ -26,13 +26,19 @@ const PORT = process.env.PORT || 5050;
 
 // ROUTES
 app.get('/', renderHomePage);
-app.get('/searches/new', renderPages);
+app.get('/searches', collectFormInformation);
+app.get('/searches/new', renderSearchForm);
+
 // app.get('/views', renderSearchForm);
 // app.get('searches', collectFormInformation);
 
 // CONSTRUCTOR FUNCTION 
 
-
+function Book(object) {
+    this.title = object.title;
+    this.author = object.author;
+    this.undefined = 
+}
 
 // FUNCTIONS
 
@@ -42,8 +48,28 @@ function renderHomePage(req, res) {
     res.status(200).render('pages/index.ejs');
 }
 
-function renderPages(req, res) {
-    res.status(200).render('pages/searches/new.ejs')
+function renderSearchForm(req, res){
+    console.log('inside search file');
+    res.status(200).render('pages/searches/new.ejs');
+}
+
+function collectFormInformation(req, res) {
+       const searchQuery = req.body.search[0];
+       const searchType = req.body.search[1];
+
+       let url = 'https://www.googleapis.com/books/v1/volumes?q=';
+       if(searchType === 'title') {url += `+intitle:${searchQuery}`}
+       if(searchType === 'author') {url += `+inauthor:${searchQuery}`}
+       
+
+       superagent.get(url)
+       .then (data =>{
+           console.log(data.body);
+           const bookArray = data.body.items;
+           const finalBookArray = bookArray.map(book => new Book(book.volumeInfo));
+           res.render('/pages/show', {library: finalBookArray});
+           
+       }) 
 }
 
 
