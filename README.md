@@ -54,3 +54,14 @@ Start time: 4:57
 Finish time: 4:57pm
 
 Actual time needed to complete: 30seconds!!
+
+
+Number and name of feature: 5. css
+
+Estimate of time needed to complete: 2hr
+
+Start time: 5:00pm
+
+Finish time: 7:20pm
+
+Actual time needed to complete: 2hrs 20min;
