@@ -38,12 +38,12 @@ app.get('/error');
 // CONSTRUCTOR FUNCTION 
 
 function Book(object) {
-    this.id = object.id ? object.id : 0; 
+    this.id = object.id ? object.id : 0;
     this.title = object.title ? object.title : 'No title found.';
     this.author = object.authors ? object.authors[0] : 'No author found';
     this.description = object.description ? object.description : 'No description found.';
     this.image = object.imageLinks.thumbnail ? object.imageLinks.thumbnail : 'https://i.imgur.com/J5LVHEL.jpg';
-    this.isbn = object.industryIdentifiers.identifier ? object.industryIdentifiers.identifier : 'No ISBN found.'; 
+    this.isbn = object.industryIdentifiers.identifier ? object.industryIdentifiers.identifier : 'No ISBN found.';
 
 }
 
@@ -55,13 +55,13 @@ function renderHomePage(req, res) {
         .then(results => {
             const allBooks = results.rows;
             res.status(200).render('pages/index.ejs', {
-                // getBookList: allBooks;
-            })
-            .catch(error => {
-                console.error('This is our error', error);
-                res.status(500).render('pages/error');
-        })
-}
+                    // getBookList: allBooks;
+                })
+                .catch(error => {
+                    console.error('This is our error', error);
+                    res.status(500).render('pages/error');
+                });
+        });
 }
 
 function renderSearchForm(req, res) {
@@ -73,10 +73,10 @@ function collectFormInformation(req, res) {
     // const sql = 'INSERT INTO library (author, title, isbn, image_url, description) VALUES ($1, $2, $3, $4, $5) RETURNING id;';
     // const safeValues = [author, title, isbn, image_url, description];
     console.log(req.body);
-    let sql='';
-    if(req.body.search[1] === 'title'){
+    let sql = '';
+    if (req.body.search[1] === 'title') {
         sql = 'SELECT * FROM library WHERE title=$1;';
-    } else{
+    } else {
         sql = 'SELECT * FROM library WHERE author=$1;';
     }
     const safeValues = [req.body.search[0]];
@@ -105,11 +105,11 @@ function collectFormInformation(req, res) {
                 superagent.get(url)
                     .then(data => {
 
-                            // NO INSERT STATEMENT . JUST NEED TO RETURN API CALL
-                            // THE BOOKS THAT ARE SHOWN TO USER, GIVE OPTION TO SELECT TO SAVE
-                            // WHEN BUTTON SEE DETAILS ROUTE TO NEW PAGE DISPLAY 
-                            // THEN GIVE AN ADD BUTTON TO SAVE BOOK 
-                            // THEN ROUTE BACK TO SEARCH NEW PAGE
+                        // NO INSERT STATEMENT . JUST NEED TO RETURN API CALL
+                        // THE BOOKS THAT ARE SHOWN TO USER, GIVE OPTION TO SELECT TO SAVE
+                        // WHEN BUTTON SEE DETAILS ROUTE TO NEW PAGE DISPLAY 
+                        // THEN GIVE AN ADD BUTTON TO SAVE BOOK 
+                        // THEN ROUTE BACK TO SEARCH NEW PAGE
 
 
                         // const newBook = new Book(object);
@@ -117,7 +117,7 @@ function collectFormInformation(req, res) {
                         // const safeValues = [author, title, isbn, image_url, description];
                         // client.query(sql, safeValues)
                         const bookArray = data.body.items;
-                        
+
                         const finalBookArray = bookArray.map(book => new Book(book.volumeInfo));
                         // console.log(finalBookArray);
                         res.status(200).render('pages/searches/show', {
@@ -141,9 +141,9 @@ function getOneBook(request, response) {
     const sql = 'SELECT * FROM library WHERE id=$1';
     const safeValues = [id];
     client.query(sql)
-    .then (results=>{
-        const myChosenBook = results.rows[0];
-    })  
+        .then(results => {
+            const myChosenBook = results.rows[0];
+        })
 }
 
 
@@ -151,8 +151,8 @@ function getOneBook(request, response) {
 
 
 client.connect()
-.then(() => {
-    app.listen(PORT, (req, res) => {
-        console.log('Listening on port', PORT);
+    .then(() => {
+        app.listen(PORT, (req, res) => {
+            console.log('Listening on port', PORT);
+        });
     });
-});
