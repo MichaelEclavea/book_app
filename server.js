@@ -55,7 +55,7 @@ function renderHomePage(req, res) {
         .then(results => {
             const allBooks = results.rows;
             res.status(200).render('pages/index.ejs', {
-                getBookList: allBooks
+                // getBookList: allBooks;
             })
             .catch(error => {
                 console.error('This is our error', error);
