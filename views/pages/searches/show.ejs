@@ -28,10 +28,25 @@
       <ul>
         <% library.forEach(book => { %>
           <div class="template">
-            <img src="<%= book.image%>" alt="">
+            <img src="<%= book.image %>" alt="">
           <h2><%= book.title %></h2>
           <h4><%= book.author %></h4>
-          <a href="">Add To Collection</a>
+         
+            <h3>Update Library</h3>
+            <form action="/books" method="post">
+              <input type="hidden" name="title" value="<%= book.title %>" placeholder="book.name" />
+              <input type="hidden" name="description" value="<%= book.description %>" placeholder="book.description"/>
+              <input type="hidden" name="status" value="<%= book.status %>" placeholder="status" />
+              <button type="submit">Add</button>
+              </form> 
+            
+            <form action="/books/<%= book.id %>?_method=PUT" method="post">
+            <input type="text" name="title" value="<%= book.title %>" placeholder="book.name" />
+            <input type="text" name="description" value="<%= book.description %>" placeholder="book.description"/>
+            <input type="text" name="status" value="<%= book.status %>" placeholder="status" />
+            <button type="submit">Update</button>
+            
+            </form>
         </div>
         <% }) %>
       </ul>
