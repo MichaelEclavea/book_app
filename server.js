@@ -32,6 +32,7 @@ app.get('/', renderHomePage);
 app.post('/searches', collectFormInformation);
 app.get('/searches/new', renderSearchForm);
 app.get('/book/:id', getOneBook);
+app.post('/books', addBookToDataBase);
 app.get('/error');
 
 // app.get('/views', renderSearchForm);
@@ -85,7 +86,7 @@ function collectFormInformation(req, res) {
         .then(results => {
             console.log(results);
             if (results.rowCount > 0) {
-                console.log('in if statemnet');
+                console.log('in if statement');
                 const id = results.rows[0].id;
                 console.log('results from sql', id)
                 response.redirect(`/book/${id}`);
@@ -145,6 +146,19 @@ function getOneBook(request, response) {
             const myChosenBook = results.rows[0];
             response.render('pages/books/detail.ejs', {myChosenBook: myChosenBook});
         });
+}
+
+function addBookToDataBase(request, response){
+    const {author, title, isbn, image_url, description} = request.body;
+    const sql = 'INSERT INTO library (author, title, isbn, image_url, description) VALUES ($1, $2, $3, $4, $5) RETURNING id;';
+    const safeValues = [author, title, isbn, image_url, description];
+    client.query(sql, safeValues)
+    .then((idFromSql) =>{
+        response.redirect(`/book/${idFromSql.rows[0].id}`)
+    }) .catch((error)=>{
+        console.log(error);
+        response.render('pages/error');
+    })
 }
 
 
