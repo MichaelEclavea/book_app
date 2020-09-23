@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Book Page</title>
+</head>
+<body>
+    <main>
+        <section>            
+              <ol>
+                <% getBookList.forEach(book => { %>
+                  <li>
+                    <img src="<%= book.image_url%>" alt="">
+                    <h2><%= book.title %></h2>
+                    <p><%= book.author %></p>
+                    <p><%= book.description %></p>
+                  </li>
+                <% }) %>
+              </ol>
+              <a href="/views/pages/searches">Go Back</a>
+        </section>
+    </main>
+</body>
+</html>
