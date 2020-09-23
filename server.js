@@ -54,14 +54,12 @@ function renderHomePage(req, res) {
     client.query(sql)
         .then(results => {
             const allBooks = results.rows;
-            res.status(200).render('pages/index.ejs', {
-                    // getBookList: allBooks;
-                })
-                .catch(error => {
-                    console.error('This is our error', error);
-                    res.status(500).render('pages/error');
-                });
-        });
+            res.status(200).render('pages/index.ejs', {getBookList: allBooks })
+        })
+                            .catch(error => {
+                                console.error('This is our error', error);
+                                res.status(500).render('pages/error');
+                    });
 }
 
 function renderSearchForm(req, res) {
