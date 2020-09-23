@@ -15,6 +15,19 @@
       <h1>My Book Collection</h1>
       <!-- eventually, this will hold all of the users favorite books from the database -->
       <a href="/searches/new">search</a>
+      <div>
+        <ol>
+          <% getBookList.forEach(book => { %>
+            <li>
+              <img src="<%= book.image_url%>" alt="">
+              <h2><%= book.title %></h2>
+              <p><%= book.author %></p>
+              <a href="/book/<%= book.id%>">View Details</a>
+            </li>
+          <% }) %>
+        </ol>
+      </div>
+
     </main>
     <footer>
 

@@ -85,3 +85,16 @@ Start time: 5:00pm
 Finish time: 7:20pm
 
 Actual time needed to complete: 2hrs 20min;
+
+
+<!-- Lab: 12 -->
+
+Number and name of feature: 1. save books
+
+Estimate of time needed to complete: 1hr
+
+Start time: 2:35
+
+Finish time: 6:05pm
+
+Actual time needed to complete: 3.5hrs

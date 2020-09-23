@@ -1,0 +1,1 @@
+INSERT INTO library (author, title, isbn, image_url, description) VALUES ('Ray Bradbury','fahrenheit451', 'ISBN_9780694526277', 'http://books.google.com/books/content?id=OYtkbGl2j0sC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api%22', 'acclaimed novel');
