@@ -15,6 +15,8 @@ client.on('error', (err) => console.log(err));
 
 
 // BRING IN MY MIDDLEWARE
+const methodoverride = require('method-override');
+app.use(methodoverride('_method'));
 app.set('view engine', 'ejs');
 app.use(express.static('./public'));
 app.use(express.urlencoded({
@@ -29,7 +31,7 @@ const PORT = process.env.PORT || 5050;
 app.get('/', renderHomePage);
 app.post('/searches', collectFormInformation);
 app.get('/searches/new', renderSearchForm);
-app.get('/book/:book.id', getOneBook);
+app.get('/book/:id', getOneBook);
 app.get('/error');
 
 // app.get('/views', renderSearchForm);
@@ -134,14 +136,15 @@ function collectFormInformation(req, res) {
 
 
 function getOneBook(request, response) {
-    const id = request.params.book_id;
+    const id = request.params.id;
     console.log(id);
     const sql = 'SELECT * FROM library WHERE id=$1';
     const safeValues = [id];
-    client.query(sql)
+    client.query(sql, safeValues)
         .then(results => {
             const myChosenBook = results.rows[0];
-        })
+            response.render('pages/books/detail.ejs', {myChosenBook: myChosenBook});
+        });
 }
 
 

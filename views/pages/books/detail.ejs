@@ -9,16 +9,24 @@
     <main>
         <section>            
               <ol>
-                <% getBookList.forEach(book => { %>
+         
                   <li>
-                    <img src="<%= book.image_url%>" alt="">
-                    <h2><%= book.title %></h2>
-                    <p><%= book.author %></p>
-                    <p><%= book.description %></p>
+                    <img src="<%= myChosenBook.image_url %>" alt="">
+                    <h2><%= myChosenBook.title %></h2>
+                    <p><%= myChosenBook.author %></p>
+                    <p><%= myChosenBook.isbn %></p>
+                    <p><%= myChosenBook.description %></p>
                   </li>
-                <% }) %>
+               
               </ol>
-              <a href="/views/pages/searches">Go Back</a>
+              <h2>Update Task</h2>
+          
+              
+              
+              
+              
+              </form>
+              <a href="/">Go Back</a>
         </section>
     </main>
 </body>

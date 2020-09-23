@@ -15,6 +15,7 @@
       <h1>My Book Collection</h1>
       <!-- eventually, this will hold all of the users favorite books from the database -->
       <a href="/searches/new">search</a>
+      <p>total books<%= getBookList.length %></p>
       <div>
         <ol>
           <% getBookList.forEach(book => { %>
@@ -22,7 +23,7 @@
               <img src="<%= book.image_url%>" alt="">
               <h2><%= book.title %></h2>
               <p><%= book.author %></p>
-              <a href="/book/<%= book.id%>">View Details</a>
+              <a href="/book/<%= book.id %>">View Details</a>
             </li>
           <% }) %>
         </ol>
