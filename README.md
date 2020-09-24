@@ -119,18 +119,18 @@ Number and name of feature: 3.
 
 Estimate of time needed to complete: 1hr
 
-Start time: 3:20
+Start time: 3:05
 
-Finish time: 
+Finish time: 5:41
 
-Actual time needed to complete: 
+Actual time needed to complete: 2hrs and 35min
 
 
-Number and name of feature: 
+Number and name of feature: 4
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 1hr
 
-Start time: 
+Start time: 5:40
 
 Finish time: 
 
