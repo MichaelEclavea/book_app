@@ -71,8 +71,6 @@ function renderSearchForm(req, res) {
 }
 
 function collectFormInformation(req, res) {
-    // const sql = 'INSERT INTO library (author, title, isbn, image_url, description) VALUES ($1, $2, $3, $4, $5) RETURNING id;';
-    // const safeValues = [author, title, isbn, image_url, description];
     console.log(req.body);
     let sql = '';
     if (req.body.search[1] === 'title') {
@@ -138,7 +136,8 @@ function collectFormInformation(req, res) {
 
 function getOneBook(request, response) {
     const id = request.params.id;
-    console.log(id);
+    
+    console.log(request);
     const sql = 'SELECT * FROM library WHERE id=$1';
     const safeValues = [id];
     client.query(sql, safeValues)
@@ -149,9 +148,11 @@ function getOneBook(request, response) {
 }
 
 function addBookToDataBase(request, response){
-    const {author, title, isbn, image_url, description} = request.body;
+    const {author, title, isbn, image, description} = request.body;
+    console.log(image);
+    // console.log(request.body);
     const sql = 'INSERT INTO library (author, title, isbn, image_url, description) VALUES ($1, $2, $3, $4, $5) RETURNING id;';
-    const safeValues = [author, title, isbn, image_url, description];
+    const safeValues = [author, title, isbn, image, description];
     client.query(sql, safeValues)
     .then((idFromSql) =>{
         response.redirect(`/book/${idFromSql.rows[0].id}`)
